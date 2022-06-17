@@ -1,0 +1,15 @@
+ 
+.pageHeading{
+    font-size: 40px;
+    font-weight: 400;
+    color: darkslategray;
+    margin: auto;
+    padding: 10px;
+    background-color: rgb(247, 194, 173);
+    
+}
+
+.loginContainer{
+    background-color: rgb(247, 238, 229);
+    
+}
