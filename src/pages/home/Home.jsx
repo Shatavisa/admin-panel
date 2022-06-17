@@ -81,15 +81,6 @@ const Home = () => {
           <WidgetSm />
           <WidgetLg />
         </div>
-        <div className="charts">
-          <Chart
-            title="User Analytics"
-            aspect={4 / 3}
-            dataKey="Active Users"
-            grid
-            data={userStats}
-          />
-        </div>
       </div>
     </div>
   );
