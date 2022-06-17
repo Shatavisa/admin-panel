@@ -1,27 +1,30 @@
 import { useEffect, useState } from "react";
 import { userRequest } from "../../redux/requestMethods";
 import "./widgetlarge.css";
-import {format} from "timeago.js"
+import { format } from "timeago.js";
+import { useSelector } from "react-redux";
 
 export default function WidgetLg() {
-  const [orders, setOrders] = useState([])
+  const [orders, setOrders] = useState([]);
 
+  const user = useSelector((state) => state.user.currentUser);
 
   useEffect(() => {
     const getOrders = async () => {
       try {
-        const response = await userRequest.get("orders")
+        const response = await userRequest.get("orders", {
+          headers: {
+            token: `Bearer ${user.accessToken}`,
+          },
+        });
         //console.log(response);
-        setOrders(response.data)
+        setOrders(response.data);
       } catch (err) {
         console.log(err);
       }
-
-
-    }
-    getOrders()
-
-  }, [])
+    };
+    getOrders();
+  }, []);
   const Button = ({ type }) => {
     return <button className={"widgetLgButton " + type}>{type}</button>;
   };
@@ -52,7 +55,7 @@ export default function WidgetLg() {
                 <Button type={order.status} />
               </td>
             </tr>
-          )
+          );
         })}
 
         {/* <tr className="widgetLgTr">
